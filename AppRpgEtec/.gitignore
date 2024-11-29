@@ -1,0 +1,54 @@
+# Arquivos e diretórios gerados pelo build
+bin/
+obj/
+
+# Pacotes NuGet
+*.nupkg
+*.snupkg
+packages/
+
+# Arquivos de configuração do Visual Studio
+.vs/
+*.vscode/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Arquivos de log
+*.log
+
+# Diretórios de cache
+**/node_modules/
+**/.nuxt/
+**/.next/
+**/.sass-cache/
+**/.cache/
+
+# Arquivos temporários do sistema
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Configurações de usuário do Rider
+.idea/
+
+# Configurações de usuário do JetBrains
+*.sln.iml
+
+# Ignorar arquivos de banco de dados SQLite (se usado)
+*.db
+*.sqlite
+*.sqlite3
+
+# Arquivos de backup
+*.bak
+*.tmp
+*.swp
+
+# Se estiver usando o Entity Framework Migrations
+migrations/
+
+# Arquivos de log de EF Core
+*.db-shm
+*.db-wal
