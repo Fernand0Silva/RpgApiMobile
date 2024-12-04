@@ -7,26 +7,43 @@
     <ScrollView>
         
         <VerticalStackLayout Padding="10, 0, 0, 0" VerticalOptions="FillAndExpand">
-            <Button Command="{Binding NovoPersonagem}" Text="Novo" BackgroundColor="DarkGoldenrod"  HorizontalOptions="Center" Padding="50,0,50,0"></Button>
-            <ListView x:Name="listView" HasUnevenRows="True" ItemsSource="{Binding Personagens}"
-                                        SelectedItem="{Binding PersonagemSelecionado}">
-
+            <SearchBar x:Name="searchBar" HeightRequest="25" Placeholder="Digite o nome do Personagem..."
+TextColor="Black" SearchCommand="{Binding PesquisarPersonagensCommand}"
+SearchCommandParameter="{Binding Source={x:Reference searchBar}, Path=Text}"/>
+            <Entry Placeholder="Digite o nome do Personagem..." Text="{Binding TextBuscaDigitado}">
+            </Entry>
+            <ListView x:Name="lvPersonagens" HasUnevenRows="True" ItemsSource="{Binding
+PersonagensEncontrados}"
+SelectedItem="{Binding PersonagemSelecionado}"
+Margin="10, 5, 0, 0">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <ViewCell.ContextActions>
-                                <MenuItem Text="Remover" IsDestructive="True"
-                                          Command="{Binding Path=BindingContext.RemoverPersonagemCommand, Source={x:Reference listView}}"
-                                          CommandParameter="{Binding .}"></MenuItem>
-                            </ViewCell.ContextActions>
-                            <StackLayout Padding="10">
-                                <Label Text="{Binding Nome}" FontSize="18" FontAttributes="Bold"/>
-                                <Label Text="{Binding PontosVida}" FontSize="14" />
+                            <StackLayout Orientation="Vertical">
+                                <Label Text="{Binding Id}" TextColor="Blue" IsVisible="False"/>
+                                <Label Text="{Binding Nome}" TextColor="Blue" FontSize="18"/>
+                                <Label Text="{Binding Classe}" TextColor="Blue" FontSize="14"/>
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
+            <Grid HorizontalOptions="Fill" Margin="5, 5, 0, 0" Padding="10, 10, 0, 0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Label Text="Atacante: " Grid.Column="0" Grid.Row="0" FontAttributes="Bold" />
+                <Label Text="{Binding DescricaoPersonagemAtacante}" Grid.Column="1" Grid.Row="0"
+TextColor="Blue" />
+                <Label Text="Oponente: " Grid.Column="0" Grid.Row="1" FontAttributes="Bold" />
+                <Label Text="{Binding DescricaoPersonagemOponente}" Grid.Column="1" Grid.Row="1"
+TextColor="Blue" />
+            </Grid>
         </VerticalStackLayout>
     </ScrollView>
 

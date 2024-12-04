@@ -14,9 +14,9 @@ namespace AppRpgEtec.ViewModels
 {
     public class AppShellViewModel: BaseViewModel
     {
-       /* private UsuarioService uService;
+        private UsuarioService uService;
         private static string conexaoAzureStorage = "";
-        private static string container = ""; */
+        private static string container = "";
 
         public AppShellViewModel()
         {

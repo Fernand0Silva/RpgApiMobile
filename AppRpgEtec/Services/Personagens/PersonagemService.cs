@@ -15,6 +15,8 @@ namespace AppRpgEtec.Services.Personagens
 
         private string _token;
 
+        public string Nome { get; internal set; }
+
         public PersonagemService(string token)
         {
             _request = new Request();
@@ -53,6 +55,20 @@ namespace AppRpgEtec.Services.Personagens
             string urlComplementar = string.Format("/{0}", personagemId); 
             var result = await _request.DeleteAsync(apiUrlBase + urlComplementar, _token); 
             return result; 
+        }
+        public async Task<ObservableCollection<Personagem>> GetByNomeAproximadoAsync(string busca)
+        {
+            string urlComplementar = $"/ GetByNomeAproximado/{busca}";
+
+            ObservableCollection<Models.Personagem> listaPersonagem = await
+                _request.GetAsync<ObservableCollection<Models.Personagem>>(apiUrlBase + urlComplementar, _token);
+
+            return listaPersonagem;
+        }
+        //dica do DisputaViewModel na parte 4 do pdf 17 na Atacante = new Personagem();
+        public static implicit operator PersonagemService(Personagem v)
+        {
+            throw new NotImplementedException();
         }
     }
 }
